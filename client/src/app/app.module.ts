@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { RoutingModule } from './routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,6 +16,7 @@ import { RegPannelComponent } from './components/reg-pannel/reg-pannel.component
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     RoutingModule
   ],
   providers: [],

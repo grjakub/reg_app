@@ -6,7 +6,7 @@ import { RegPannelComponent } from './components/reg-pannel/reg-pannel.component
 const setRoutes: Routes = [
   { path: '', component: HomePageComponent},
   { path: 'reg-pannel', component: RegPannelComponent},
-  { path: '**', component: HomePageComponent},
+  { path: '**', component: HomePageComponent}
   //{ path: 'dashboard',  component: DashboardComponent },
 ];
 

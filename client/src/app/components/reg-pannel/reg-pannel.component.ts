@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-reg-pannel',
   templateUrl: './reg-pannel.component.html',
-  styleUrls: ['./reg-pannel.component.css']
+  styleUrls: ['./reg-pannel.component.scss']
 })
 export class RegPannelComponent implements OnInit {
 
