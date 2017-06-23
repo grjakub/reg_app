@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RoutingModule } from './routing.module';
@@ -17,7 +18,8 @@ import { RegPannelComponent } from './components/reg-pannel/reg-pannel.component
   imports: [
     BrowserModule,
     HttpModule,
-    RoutingModule
+    RoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
