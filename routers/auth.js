@@ -3,13 +3,13 @@ const User = require('../models/userModel');
 module.exports = (router) => {
     router.post('/reg-pannel', (req, res) => {
       
-        const valueCheck = [req.body.first_name, req.body.last_name, req.body.email, req.body.password],
-              valueCheckInfo = ["First name", "Last Name", "e-mail", "password"];
+        const valueCheck = [req.body.ticket, req.body.first_name, req.body.last_name, req.body.email, req.body.password],
+              valueCheckInfo = ["ticket option", "First name", "Last Name", "e-mail", "password"];
         let valueCounter = 0;
-
+            console.log(req.body.ticket  + '<---')
               for(let i = 0; i< valueCheck.length; i++) {
                   if (!valueCheck[i]) {
-                     res.json({ success: false, message: 'Please insert your ' + valueCheckInfo[i]}); 
+                     res.json({ success: false, message: 'Please set your ' + valueCheckInfo[i]}); 
                   } else {
                       valueCounter++;
                   }
@@ -27,12 +27,15 @@ module.exports = (router) => {
             user.save((err) => {
                 if(err) {    
                     let basicError = [err.errors.email, err.errors.first_name, err.errors.last_name, err.errors.password]        
-                    console.log(err)
+                    console.log(err + 'asdsadsad')
+                     console.log(req.body.ticket  + '<---ssss')
                     if(err.code === 11000) {
                        res.json({success: false, message : "User is there !!: "});
                     } else {
+                        console.log('tutaj');
                         if(err.errors) {
                             for (let e = 0 ;e <basicError.length; e++) {
+                                console.log(basicError[e]);
                                 if(basicError[e]) {
                                 res.json({success: false, message: basicError[e].message});
                                 return;
@@ -44,6 +47,8 @@ module.exports = (router) => {
                     res.json({success: true, message: "good job you are Registred"});
                 }
             })
+        } else {
+            res.json({success: false, message : "User is there !!: "});
         }  
     });
     return router;

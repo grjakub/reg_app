@@ -10,11 +10,15 @@ import { AuthService } from '../../services/auth.service';
 export class RegPannelComponent implements OnInit {
 
 form: FormGroup
+logoPath:string
+logoAlt:string 
 
  constructor(
    private formBuilder:FormBuilder,
    private authService: AuthService
    ) { 
+     this.logoPath = "/../../assets/images/logo.png";
+     this.logoAlt = "nazwa firmy";
     this.createForm();
   }
 
@@ -48,6 +52,7 @@ createForm() {
 }
 
 validatorEmail(control) {
+  console.log('error 1');
   const validValue = new RegExp(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i)
   validValue.test(control.value);
   if(validValue.test(control.value)) {
@@ -61,6 +66,7 @@ onRegisterSubmit(){
 const user = {
   first_name: this.form.get('first_name').value,
   last_name: this.form.get('last_name').value,
+  ticket: this.form.get('ticket').value,
   textarea_1: this.form.get('textarea_1').value,
   textarea_2: this.form.get('textarea_2').value,
   email: this.form.get('email').value,
@@ -70,10 +76,6 @@ const user = {
 this.authService.registerUser(user).subscribe(data => {
   console.log(data);
 })
-  console.log(this.form.get('ticket').toString() + '<---ticket');
-  console.log(this.form.get('ticket').value + '<---ticket');
-  console.log(this.form.get('email').value)
-  console.log(this.form.get('first_name').value)
 }
 
   ngOnInit() {

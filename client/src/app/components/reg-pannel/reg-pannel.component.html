@@ -1,7 +1,8 @@
 <div class="bg-container">
+  <div class="vertical-center">
   <div class="content-container">
     <div class="logo-container">
-      <img ng-src="/../../assets/images/logo.png" alt"nazw_firmy logo">
+      <img src="{{logoPath}}" alt="{{logoAlt}}"/>
     </div>
     <div class="info-text-container">
       <h1>WEEKEND PROMOTION</h1>
@@ -13,14 +14,14 @@
           <div class="check-container">
             <div class="form-check">
               <div class="form-check-small">
-                <input type="radio" name="ticket" value="1">
+                <input type="radio" name="ticket" value="1" formControlName="ticket">
                 <label>1 TICKET €109 </label>
               </div>
             </div>
 
             <div class="form-check">
               <div class="form-check-small">
-                <input type="radio" name="ticket" value="5">
+                <input type="radio" name="ticket" value="5" formControlName="ticket"> 
                 <label>5 TICKETS €495 </label>
               </div>
             </div> 
@@ -95,5 +96,5 @@
         </div>
       </form>
     </div>
-  </div>
+  </div></div>
 </div>

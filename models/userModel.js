@@ -130,9 +130,9 @@ const Schema = mongoose.Schema,
       email: { type: String, require: true, unique: true, lowercase:true, validate: emailValidator },
       first_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
       last_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
+      ticket: { type: Number, require: true, unique: false },
       textarea_1: { type: String, require: false, unique: false, lowercase:true },
       textarea_2: { type: String, require: false, unique: false, lowercase:true },
-      ticket: { type: Number, require: true, unique: false },
       password: { type: String, require: true, validate: passwordValidators }
     });
 
