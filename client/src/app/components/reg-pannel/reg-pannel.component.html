@@ -1,33 +1,30 @@
-<div class="vertical-center">
-   <div class="container-form">
-     <div class="row">
-       <div class="col-md-12">
-         super hiper img
-       </div>
-     </div>
-     <div class="row">
-       <div class="col-md-12">
-         <h1>WEEKEND PROMOTION</h1>
-         <h4> PROMOTION ENDS: 20.03.2014, 12:00PM</h4>
-       </div>
-     </div>
-     <div class="row">
-       <div class="col-md-12">
-          <form [formGroup]="form" (submit)="onRegisterSubmit()">
-            <div class="top-form">
-<div class="form-check">
+<div class="bg-container">
+  <div class="content-container">
+    <div class="logo-container">
+      <img ng-src="/../../assets/images/logo.png" alt"nazw_firmy logo">
+    </div>
+    <div class="info-text-container">
+      <h1>WEEKEND PROMOTION</h1>
+      <h4><u> PROMOTION ENDS:</u> 20.03.2014, 12:00PM</h4>
+    </div>
+    <div class="form-container">
+      <form [formGroup]="form" (submit)="onRegisterSubmit()">
+        <div class="top-form-container">
+          <div class="check-container">
+            <div class="form-check">
               <div class="form-check-small">
-                <input type="radio" name="1_ticket" value="">
+                <input type="radio" name="ticket" value="1">
                 <label>1 TICKET €109 </label>
               </div>
             </div>
 
             <div class="form-check">
               <div class="form-check-small">
-                <input type="radio" name="5_tickets" value="">
+                <input type="radio" name="ticket" value="5">
                 <label>5 TICKETS €495 </label>
               </div>
             </div> 
+          </div>
 
             <div class="form-group">
               <div [ngClass]="{'has-error':(form.controls.first_name.errors && form.controls.first_name.dirty), 'has-success': !form.controls.first_name.errors}" >
@@ -63,41 +60,40 @@
                 <ul class="help-block">
                   <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This fiels is required</li>
                   <li *ngIf="form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength ">Minimum value x, max value x</li>
-                  <li *ngIf="form.controls.email.errors?.validatorEmail">must be valid</li>
+                  <li *ngIf="form.controls.email.errors?.validatorEmail && form.controls.email.dirty">must be valid</li>
                 </ul>
               </div>
             </div>
 
-            <div class="form-group">
+             <div class="form-group">
               <div [ngClass]="{'has-error':(form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
                 <input type="password" name="password" placeholder="password" value="password" formControlName="password">
                 <ul class="help-block">
                     <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This fiels is required</li>
                     <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength ">Minimum value x, max value x</li>
                 </ul>
+               </div>
               </div>
             </div>
-            </div>
 
-            <div class="bottom-form-container">
-              <div class="set-width">
-                <div class="vid">
+        <div class="bottom-form-container">
+           <div class="set-width">
+              <div class="vid">
+                <div class="form-group">
+                    <input type="text" name="vid_number" value="vid_number">
+                    <input class="input-bonus" type="text" name="tickets_count" value="1">
+                    <span class="ticket-info">x Numbers of tickets </span>
+                   </div>
+                </div>
+
+                <div class="reg">
                   <div class="form-group">
-                      <input type="text" name="vid_number" value="vid_number">
-                      <input class="input-bonus" type="text" name="tickets_count" value="1">
-                      <span class="ticket-info">x Numbers of tickets </span>
-                    </div>
-                  </div>
-
-                  <div class="reg">
-                    <div class="form-group">
-                        <input [disabled]="!form.valid" type="submit" value="REGISTER">  
-                      </div>
-                  </div>
+                    <input [disabled]="!form.valid" type="submit" value="REGISTER">  
+                </div>
               </div>
-            </div>        
-            </form>
-       </div>
-     </div>
-   </div>
+           </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

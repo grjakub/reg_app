@@ -23,24 +23,25 @@ createForm() {
     email: ['', Validators.compose([
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(22),
+      Validators.maxLength(30),
       this.validatorEmail
     ])],
     first_name:  ['', Validators.compose([
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(22)
+      Validators.maxLength(30)
     ])],
     last_name:  ['', Validators.compose([
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(22)
+      Validators.maxLength(39)
     ])],
     textarea_1: '',
     textarea_2: '',
+    ticket: '',
     password:  ['', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(8),
       Validators.maxLength(22)
     ])]
   })
@@ -69,7 +70,8 @@ const user = {
 this.authService.registerUser(user).subscribe(data => {
   console.log(data);
 })
-  
+  console.log(this.form.get('ticket').toString() + '<---ticket');
+  console.log(this.form.get('ticket').value + '<---ticket');
   console.log(this.form.get('email').value)
   console.log(this.form.get('first_name').value)
 }

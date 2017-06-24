@@ -38,7 +38,7 @@ let emailValidCheck = (email) => {
     if (!email) {
         return false;
     } else {
-        const validValue = new RegExp(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i)
+        const validValue = regHelper.email;
 
         return validValue.test(email);
     }
@@ -67,7 +67,7 @@ let userLength = (username) => {
     if (!username) {
         return false;
     } else {
-        if (username.length < 5 || username.length > 20) {
+        if (username.length < 5 || username.length > 22) {
             return false;
         } else {
             return true;
@@ -77,7 +77,7 @@ let userLength = (username) => {
 
 const userValidators = [{
         validator:  userLength, 
-        message: "User need to be between 5 a 20 char"
+        message: "User need to be between 5 a 22 char"
     },{
         validator: userValidCheck, 
         message: "User cannot have special char"
@@ -132,6 +132,7 @@ const Schema = mongoose.Schema,
       last_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
       textarea_1: { type: String, require: false, unique: false, lowercase:true },
       textarea_2: { type: String, require: false, unique: false, lowercase:true },
+      ticket: { type: Number, require: true, unique: false },
       password: { type: String, require: true, validate: passwordValidators }
     });
 
