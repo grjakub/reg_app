@@ -5,7 +5,8 @@ const express = require('express'),
       config = require('./config/database'),
       path = require('path'),
       auth = require('./routers/auth')(router),
-      bodyParser = require('body-parser');
+      bodyParser = require('body-parser'),
+      cors = require('cors');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, (err) => {
@@ -17,12 +18,15 @@ mongoose.connect(config.uri, (err) => {
   }
 });
 
+
+app.use(cors());
+
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/auth', auth)
 // parse application/json 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/dist/'));
+app.use('/auth', auth);
 
 
 app.get('*', (req, res) => {

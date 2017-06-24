@@ -49,7 +49,7 @@ const emailValidator = [{
     },
     {
         validator : emailValidCheck,
-        message: "Must be validate email"
+        message: "Must be validate email1"
     }];
 
 let userValidCheck = (username) => {
@@ -129,9 +129,9 @@ const Schema = mongoose.Schema,
       userSchema = new Schema({
       email: { type: String, require: true, unique: true, lowercase:true, validate: emailValidator },
       first_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
-      last_name: { type: String, require: true, unique: true, lowercase:true, validate: textAreaLength },
-      textarea_1: { type: String, require: true, unique: false, lowercase:true, validate: textAreaLength },
-      textarea_2: { type: String, require: true, unique: false, lowercase:true, validate: textAreaLength },
+      last_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
+      textarea_1: { type: String, require: false, unique: false, lowercase:true },
+      textarea_2: { type: String, require: false, unique: false, lowercase:true },
       password: { type: String, require: true, validate: passwordValidators }
     });
 

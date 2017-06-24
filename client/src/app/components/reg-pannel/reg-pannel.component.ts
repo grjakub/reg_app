@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-reg-pannel',
@@ -10,7 +11,10 @@ export class RegPannelComponent implements OnInit {
 
 form: FormGroup
 
- constructor(private formBuilder:FormBuilder) { 
+ constructor(
+   private formBuilder:FormBuilder,
+   private authService: AuthService
+   ) { 
     this.createForm();
   }
 
@@ -53,7 +57,21 @@ validatorEmail(control) {
 }
 
 onRegisterSubmit(){
-  console.log(this.form)
+const user = {
+  first_name: this.form.get('first_name').value,
+  last_name: this.form.get('last_name').value,
+  textarea_1: this.form.get('textarea_1').value,
+  textarea_2: this.form.get('textarea_2').value,
+  email: this.form.get('email').value,
+  password: this.form.get('password').value
+}
+
+this.authService.registerUser(user).subscribe(data => {
+  console.log(data);
+})
+  
+  console.log(this.form.get('email').value)
+  console.log(this.form.get('first_name').value)
 }
 
   ngOnInit() {

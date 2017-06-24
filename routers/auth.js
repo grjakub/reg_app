@@ -6,7 +6,7 @@ module.exports = (router) => {
         const valueCheck = [req.body.first_name, req.body.last_name, req.body.email, req.body.password],
               valueCheckInfo = ["First name", "Last Name", "e-mail", "password"];
         let valueCounter = 0;
-
+console.log(req.body + '<----');
               for(let i = 0; i< valueCheck.length; i++) {
                   if (!valueCheck[i]) {
                      res.json({ success: false, message: 'Please insert your ' + valueCheckInfo[i]}); 
@@ -27,7 +27,7 @@ module.exports = (router) => {
            
             user.save((err) => {
                 if(err) {    
-                    let basicError = [err.errors.email, err.errors.username, err.errors.password]        
+                    let basicError = [err.errors.email, err.errors.first_name, err.errors.last_name, err.errors.password]        
                     console.log(err)
                     if(err.code === 11000) {
                        res.json({success: false, message : "User is there !!: "});
