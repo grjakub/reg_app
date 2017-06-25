@@ -11,15 +11,14 @@ const express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri, (err) => {
   if(err) {
-    console.log('not this time', err);
+    console.log('Connected faild, problem with -->', err);
   } else {
-    console.log(config.secret);
-    console.log('you are pro !!!')
+    console.log('DB is connected')
   }
 });
 
 
-app.use(cors());
+app.use(cors()); // it`s only for dev
 
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }));

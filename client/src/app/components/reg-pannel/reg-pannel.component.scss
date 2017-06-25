@@ -141,6 +141,11 @@ $desktop-width: 1024px;
       color: white;
       display: block;
       padding-top: 12px;
+      float: left;
+
+      @include tabletup {
+         float: none;
+      }
     }
 
     .vid {
@@ -155,6 +160,7 @@ $desktop-width: 1024px;
 
           @include tabletup {
             max-width: 152px;
+            margin-bottom: 0;
           }
 
           &:nth-child(2) {

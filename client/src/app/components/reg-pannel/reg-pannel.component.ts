@@ -19,7 +19,7 @@ logoAlt:string
    ) { 
      this.logoPath = "/../../assets/images/logo.png";
      this.logoAlt = "nazwa firmy";
-    this.createForm();
+     this.createForm();
   }
 
 createForm() {
@@ -46,13 +46,12 @@ createForm() {
     password:  ['', Validators.compose([
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(22)
+      Validators.maxLength(30)
     ])]
   })
 }
 
 validatorEmail(control) {
-  console.log('error 1');
   const validValue = new RegExp(/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i)
   validValue.test(control.value);
   if(validValue.test(control.value)) {

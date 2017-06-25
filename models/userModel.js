@@ -3,30 +3,29 @@ mongoose.Promise = global.Promise;
 
 const regHelper = {
     email: /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i,
-    password: /^[a-zA-Z\-]+$/,
+    password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/,
     user :  /^[a-zA-Z\-]+$/
 }
 
-let globValidator = {
-    checkValu: (param, valid) => {
-            if (!param) {return false;} else {
-                return regHelper.valid.test(param);
-            }
-         },
-   lengthChecker: (param, min, max) => {
-    if (!param) {return false;} else {
-        if (param.length < min || param.length > max) {
-            return false;
-        } else { return true;}
-    }
-   }
+const letterCounter = {
+    normal: {
+        min: 5,
+        max: 30
+    },
+    password:{
+        min: 8,
+        max: 30
+    },
+    textArea: {
+        max: 167
+    },
 }
 
 let emailChecker = (email) => {
     if (!email) {
         return false;
     } else {
-        if (email.length < 5 || email.length > 30) {
+        if (email.length < letterCounter.normal.min || email.length > letterCounter.normal.max) {
             return false;
         } else {
             return true;
@@ -44,30 +43,21 @@ let emailValidCheck = (email) => {
     }
 }
 
-const emailValidator = [{
-        validator:  emailChecker, message: "Email need to be from 5 to 30 letters"
-    },
-    {
-        validator : emailValidCheck,
-        message: "Must be validate email1"
-    }];
-
-let userValidCheck = (username) => {
-    if (!username) {
+let userValidCheck = (first_name) => {
+    if (!first_name) {
         return false;
     } else {
-        const validValue = /^[a-zA-Z\-]+$/;
+        const validValue = regHelper.user;
 
-        return validValue.test(username);
+        return validValue.test(first_name);
     }
 }
 
-
-let userLength = (username) => {
-    if (!username) {
+let userLength = (first_name) => {
+    if (!first_name) {
         return false;
     } else {
-        if (username.length < 5 || username.length > 22) {
+        if (first_name.length < letterCounter.normal.min || first_name.length > letterCounter.normal.max) {
             return false;
         } else {
             return true;
@@ -75,19 +65,11 @@ let userLength = (username) => {
     }
 }
 
-const userValidators = [{
-        validator:  userLength, 
-        message: "User need to be between 5 a 22 char"
-    },{
-        validator: userValidCheck, 
-        message: "User cannot have special char"
-    }];
-
 let passwordLength = (password) => {
     if (!password) {
         return false;
     } else {
-        if (password.length < 8 || password.length > 22) {
+        if (password.length < letterCounter.password.min || password.length > letterCounter.password.max) {
             return false;
         } else {
             return true;
@@ -109,30 +91,53 @@ let textAreaLength = (textAreaLength) => {
     if (!textAreaLength) {
         return null;
     } else {
-        if (textAreaLength.length > 167) {
+        if (textAreaLength.length > letterCounter.textArea.max) {
             return false;
         } else {
             return true;
         }
     }
 }
-console.log(textAreaLength)
 
-const passwordValidators = [{
-        validator:  passwordLength, message: "password need to be between 8 a 22 char"
-    },{
-        validator: passwordValidCheck, message: "password cannot have special char"
+const emailValidator = [{
+        validator: emailChecker, 
+        message: "Email need to be from 5 to 30 letters"
+    },
+    {
+        validator : emailValidCheck,
+        message: "Must be validate email1"
     }];
 
-const Schema = mongoose.Schema,
+const userValidators = [{
+        validator:  userLength, 
+        message: "User need to be between 5 a 30 char"
+    },{
+        validator: userValidCheck, 
+        message: "User cannot have special char"
+    }];
+
+const passwordValidators = [{
+        validator:  passwordLength, 
+        message: "password need to be between 8 a 30 char"
+    },{
+        validator: passwordValidCheck, 
+        message: "at least one letter, one number and one special character:"
+    }];
+
+const textAreaValid = [{
+        validator:  textAreaLength, 
+        message: "max char is 167"
+    }];
+
+let   Schema = mongoose.Schema,
       bcryot = require('bcrypt-nodejs'),
       userSchema = new Schema({
       email: { type: String, require: true, unique: true, lowercase:true, validate: emailValidator },
       first_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
       last_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
       ticket: { type: Number, require: true, unique: false },
-      textarea_1: { type: String, require: false, unique: false, lowercase:true },
-      textarea_2: { type: String, require: false, unique: false, lowercase:true },
+      textarea_1: { type: String, require: false, unique: false, lowercase:true, validate: textAreaValid },
+      textarea_2: { type: String, require: false, unique: false, lowercase:true, validate: textAreaValid },
       password: { type: String, require: true, validate: passwordValidators }
     });
 

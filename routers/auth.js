@@ -26,14 +26,13 @@ module.exports = (router) => {
                 })
             user.save((err) => {
                 if(err) {    
-                    let basicError = [err.errors.email, err.errors.first_name, err.errors.last_name, err.errors.password]        
-                    console.log(err + 'asdsadsad')
-                     console.log(req.body.ticket  + '<---ssss')
                     if(err.code === 11000) {
                        res.json({success: false, message : "User is there !!: "});
                     } else {
-                        console.log('tutaj');
+
                         if(err.errors) {
+                           let basicError = [err.errors.email, err.errors.first_name, err.errors.last_name, err.errors.password]        
+
                             for (let e = 0 ;e <basicError.length; e++) {
                                 console.log(basicError[e]);
                                 if(basicError[e]) {

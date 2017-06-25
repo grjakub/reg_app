@@ -32,7 +32,7 @@
                 <input type="text" value="first_name" name="first_name" formControlName="first_name" placeholder="first name"> 
                   <ul class="help-block">
                     <li *ngIf="form.controls.first_name.errors?.required && form.controls.first_name.dirty">This fiels is required</li>
-                    <li *ngIf="form.controls.first_name.errors?.minlength || form.controls.first_name.errors?.maxlength ">Minimum value x, max value x</li>
+                    <li *ngIf="form.controls.first_name.errors?.minlength || form.controls.first_name.errors?.maxlength ">Minimum value 5, max value 22</li>
                   </ul>
               </div>
             </div>
@@ -42,7 +42,7 @@
                 <input type="text" value="last_name" name="last_name" placeholder="last name" formControlName="last_name">
                 <ul class="help-block">
                     <li *ngIf="form.controls.last_name.errors?.required && form.controls.last_name.dirty">This fiels is required</li>
-                    <li *ngIf="form.controls.last_name.errors?.minlength || form.controls.last_name.errors?.maxlength ">Minimum value x, max value x</li>
+                    <li *ngIf="form.controls.last_name.errors?.minlength || form.controls.last_name.errors?.maxlength ">Minimum value 5, max value 22</li>
                   </ul>
               </div>
             </div>
@@ -60,8 +60,8 @@
                 <input type="text" name="email" value="email" placeholder="email" formControlName="email">
                 <ul class="help-block">
                   <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This fiels is required</li>
-                  <li *ngIf="form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength ">Minimum value x, max value x</li>
-                  <li *ngIf="form.controls.email.errors?.validatorEmail && form.controls.email.dirty">must be valid</li>
+                  <li *ngIf="form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength ">Minimum value 5, max value 22</li>
+                  <li *ngIf="form.controls.email.errors?.validatorEmail && form.controls.email.dirty">must be valid example: example@example.com</li>
                 </ul>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 <input type="password" name="password" placeholder="password" value="password" formControlName="password">
                 <ul class="help-block">
                     <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This fiels is required</li>
-                    <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength ">Minimum value x, max value x</li>
+                    <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength ">Minimum value 5, max value 22</li>
                 </ul>
                </div>
               </div>
