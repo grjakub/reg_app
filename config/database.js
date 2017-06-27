@@ -1,7 +1,7 @@
 const crypto = require('crypto').randomBytes(256).toString('hex');
 
 module.exports = {
-    uri: 'mongodb://localhost:27017/' + this.db,
+    uri: 'mongodb://localhost:27017/req_app',
     secret: crypto,
-    db: 'reg_app'
+    db: 'req_app'
 }
