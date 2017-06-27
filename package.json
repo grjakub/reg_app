@@ -4,8 +4,7 @@
   "description": "register app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "startdev": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

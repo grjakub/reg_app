@@ -26,7 +26,7 @@ $desktop-width: 1024px;
   display: block;
   height: auto;
 
-  @include tabletup {
+  @include desktop {
     height: 100%;
   }
 

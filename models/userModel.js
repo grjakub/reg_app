@@ -43,7 +43,7 @@ let emailValidCheck = (email) => {
     }
 }
 
-let userValidCheck = (first_name) => {
+let userValidCheckFirst = (first_name) => {
     if (!first_name) {
         return false;
     } else {
@@ -53,11 +53,33 @@ let userValidCheck = (first_name) => {
     }
 }
 
-let userLength = (first_name) => {
+let userValidCheckSecond = (first_name) => {
+    if (!first_name) {
+        return false;
+    } else {
+        const validValue = regHelper.user;
+
+        return validValue.test(first_name);
+    }
+}
+
+let userLengthFirst = (first_name) => {
     if (!first_name) {
         return false;
     } else {
         if (first_name.length < letterCounter.normal.min || first_name.length > letterCounter.normal.max) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+let userLengthSecond = (last_nam) => {
+    if (!last_nam) {
+        return false;
+    } else {
+        if (last_nam.length < letterCounter.normal.min || last_nam.length > letterCounter.normal.max) {
             return false;
         } else {
             return true;
@@ -108,20 +130,28 @@ const emailValidator = [{
         message: "Must be validate email1"
     }];
 
-const userValidators = [{
-        validator:  userLength, 
+const userValidatorsFirst = [{
+        validator:  userLengthFirst, 
         message: "User need to be between 5 a 30 char"
     },{
-        validator: userValidCheck, 
+        validator: userValidCheckFirst, 
         message: "User cannot have special char"
     }];
+
+const userValidatorsSecond = [{
+        validator:  userLengthSecond, 
+        message: "User need to be between 5 a 30 char"
+    },{
+        validator: userValidCheckSecond, 
+        message: "User cannot have special char"
+    }];    
 
 const passwordValidators = [{
         validator:  passwordLength, 
         message: "password need to be between 8 a 30 char"
     },{
         validator: passwordValidCheck, 
-        message: "at least one letter, one number and one special character:"
+        message: "password: no special chars (POC version)"
     }];
 
 const textAreaValid = [{
@@ -133,8 +163,8 @@ let   Schema = mongoose.Schema,
       bcryot = require('bcrypt-nodejs'),
       userSchema = new Schema({
       email: { type: String, require: true, unique: true, lowercase:true, validate: emailValidator },
-      first_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
-      last_name: { type: String, require: true, unique: true, lowercase:true, validate: userValidators },
+      first_name: { type: String, require: true, unique: false, lowercase:true, validate: userValidatorsFirst },
+      last_name: { type: String, require: true, unique: false, lowercase:true, validate: userValidatorsSecond },
       ticket: { type: Number, require: true, unique: false },
       textarea_1: { type: String, require: false, unique: false, lowercase:true, validate: textAreaValid },
       textarea_2: { type: String, require: false, unique: false, lowercase:true, validate: textAreaValid },
