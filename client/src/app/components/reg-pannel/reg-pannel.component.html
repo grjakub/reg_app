@@ -5,8 +5,8 @@
       <img src="{{logoPath}}" alt="{{logoAlt}}"/>
     </div>
     <div class="info-text-container">
-      <h1>WEEKEND PROMOTION</h1>
-      <h4><u> PROMOTION ENDS:</u> 20.03.2014, 12:00PM</h4>
+      <h1>{{this.setText.header}}</h1>
+      <h4>{{this.setText.subheader}}</h4>
     </div>
     <div class="form-container">
       <form [formGroup]="form" (submit)="onRegisterSubmit()">
@@ -15,63 +15,63 @@
             <div class="form-check">
               <div class="form-check-small">
                 <input type="radio" name="ticket" value="1" formControlName="ticket">
-                <label>1 TICKET €109 </label>
+                <label>{{this.setText.ticket_1}}</label>
               </div>
             </div>
 
             <div class="form-check">
               <div class="form-check-small">
                 <input type="radio" name="ticket" value="5" formControlName="ticket"> 
-                <label>5 TICKETS €495 </label>
+                <label>{{this.setText.ticket_5}}</label>
               </div>
             </div> 
           </div>
 
             <div class="form-group">
               <div [ngClass]="{'has-error':(form.controls.first_name.errors && form.controls.first_name.dirty), 'has-success': !form.controls.first_name.errors}" >
-                <input type="text" value="first_name" name="first_name" formControlName="first_name" placeholder="first name"> 
+                <input type="text" value="first_name" name="first_name" formControlName="first_name" placeholder="{{this.setText.firstname_placeholder}}"> 
                   <ul class="help-block">
-                    <li *ngIf="form.controls.first_name.errors?.required && form.controls.first_name.dirty">This fiels is required</li>
-                    <li *ngIf="form.controls.first_name.errors?.minlength || form.controls.first_name.errors?.maxlength ">Minimum value 5, max value 22</li>
+                    <li *ngIf="form.controls.first_name.errors?.required && form.controls.first_name.dirty">{{this.setValidText.firstname_req}}</li>
+                    <li *ngIf="form.controls.first_name.errors?.minlength || form.controls.first_name.errors?.maxlength ">{{this.setValidText.firstname_length}}</li>
                   </ul>
               </div>
             </div>
 
             <div class="form-group">
               <div [ngClass]="{'has-error':(form.controls.last_name.errors && form.controls.last_name.dirty), 'has-success': !form.controls.last_name.errors}">
-                <input type="text" value="last_name" name="last_name" placeholder="last name" formControlName="last_name">
+                <input type="text" value="last_name" name="last_name" placeholder="{{this.setText.lastname_placeholder}}" formControlName="last_name">
                 <ul class="help-block">
-                    <li *ngIf="form.controls.last_name.errors?.required && form.controls.last_name.dirty">This fiels is required</li>
-                    <li *ngIf="form.controls.last_name.errors?.minlength || form.controls.last_name.errors?.maxlength ">Minimum value 5, max value 22</li>
+                    <li *ngIf="form.controls.last_name.errors?.required && form.controls.last_name.dirty">{{this.setValidText.lastname_req}}</li>
+                    <li *ngIf="form.controls.last_name.errors?.minlength || form.controls.last_name.errors?.maxlength ">{{this.setValidText.lastname_length}}</li>
                   </ul>
               </div>
             </div>
 
             <div class="form-group">
-              <input name="textarea_1" formControlName="textarea_1" placeholder="textarea_1">
+              <input name="textarea_1" formControlName="textarea_1" placeholder="{{this.setText.textarea_1_placeholder}}">
             </div>
 
             <div class="form-group">
-              <input name="textarea_2" formControlName="textarea_2" placeholder="textarea_2">
+              <input name="textarea_2" formControlName="textarea_2" placeholder="{{this.setText.textarea_2_placeholder}}">
             </div>
 
             <div class="form-group">
               <div [ngClass]="{'has-error':(form.controls.email.errors && form.controls.email.dirty), 'has-success': !form.controls.email.errors}">
-                <input type="text" name="email" value="email" placeholder="email" formControlName="email">
+                <input type="text" name="email" value="email" placeholder="{{this.setText.email_placeholder}}" formControlName="email">
                 <ul class="help-block">
-                  <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This fiels is required</li>
-                  <li *ngIf="form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength ">Minimum value 5, max value 22</li>
-                  <li *ngIf="form.controls.email.errors?.validatorEmail && form.controls.email.dirty">must be valid example: example@example.com</li>
+                  <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">{{this.setValidText.email_req}}</li>
+                  <li *ngIf="form.controls.email.errors?.minlength || form.controls.email.errors?.maxlength ">{{this.setValidText.email_valid}}</li>
+                  <li *ngIf="form.controls.email.errors?.validatorEmail && form.controls.email.dirty">{{this.setValidText.email_length}}</li>
                 </ul>
               </div>
             </div>
 
              <div class="form-group">
               <div [ngClass]="{'has-error':(form.controls.password.errors && form.controls.password.dirty), 'has-success': !form.controls.password.errors}">
-                <input type="password" name="password" placeholder="password" value="password" formControlName="password">
+                <input type="password" name="password" placeholder="{{this.setText.password_placeholder}}" value="password" formControlName="password">
                 <ul class="help-block">
-                    <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This fiels is required</li>
-                    <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength ">Minimum value 5, max value 22</li>
+                    <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">{{this.setValidText.password_req}}</li>
+                    <li *ngIf="form.controls.password.errors?.minlength || form.controls.password.errors?.maxlength ">{{this.setValidText.password_length}}</li>
                 </ul>
                </div>
               </div>
@@ -81,15 +81,15 @@
            <div class="set-width">
               <div class="vid">
                 <div class="form-group">
-                    <input type="text" name="vid_number" value="vid_number">
-                    <input class="input-bonus" type="text" name="tickets_count" value="1">
-                    <span class="ticket-info">x Numbers of tickets </span>
+                    <input type="text" name="vid_number" placeholder="{{this.setText.vid_number_placeholder}}">
+                    <input class="input-bonus" type="text" name="tickets_count" value="{{this.setText.vid_value_placeholder}}">
+                    <span class="ticket-info">{{this.setText.counter_text}}</span>
                    </div>
                 </div>
 
                 <div class="reg">
                   <div class="form-group">
-                    <input [disabled]="!form.valid" type="submit" value="REGISTER">  
+                    <input [disabled]="!form.valid" type="submit" value="{{this.setText.register_button_tekst}}">  
                 </div>
               </div>
            </div>

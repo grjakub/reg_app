@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const infoSet = require('./userInfo.json'),
+      mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const regHelper = {
@@ -123,40 +124,40 @@ let textAreaLength = (textAreaLength) => {
 
 const emailValidator = [{
         validator: emailChecker, 
-        message: "Email need to be from 5 to 30 letters"
+        message: infoSet.emailInfo.length
     },
     {
         validator : emailValidCheck,
-        message: "Must be validate email1"
+        message: infoSet.emailInfo.validInfo
     }];
 
 const userValidatorsFirst = [{
         validator:  userLengthFirst, 
-        message: "User need to be between 5 a 30 char"
+        message: infoSet.uerInfo.length
     },{
         validator: userValidCheckFirst, 
-        message: "User cannot have special char"
+        message: infoSet.uerInfo.validInfo
     }];
 
 const userValidatorsSecond = [{
         validator:  userLengthSecond, 
-        message: "User need to be between 5 a 30 char"
+        message: infoSet.uerInfo.length
     },{
         validator: userValidCheckSecond, 
-        message: "User cannot have special char"
+        message: infoSet.uerInfo.validInfo
     }];    
 
 const passwordValidators = [{
         validator:  passwordLength, 
-        message: "password need to be between 8 a 30 char"
+        message: infoSet.passwordInfo.length
     },{
         validator: passwordValidCheck, 
-        message: "password: no special chars (POC version)"
+        message: infoSet.passwordInfo.validInfo
     }];
 
 const textAreaValid = [{
         validator:  textAreaLength, 
-        message: "max char is 167"
+        message:  infoSet.textInfo.textInfo
     }];
 
 let   Schema = mongoose.Schema,
