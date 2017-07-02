@@ -31,10 +31,10 @@ public setValidText: ValidInformation;
   }
 
 createForm() {
-  console.log(info[0] + '<--');
+  
   this.setText = info[0];
   this.setValidText = validInfo[0];
-  
+
   this.form = this.formBuilder.group({
     email: ['', Validators.compose([
       Validators.required,
