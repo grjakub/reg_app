@@ -1,0 +1,17 @@
+{
+    "emailInfo":{
+        "length":"Email need to be from 5 to 30 letters",
+        "validInfo": "Must be validate email1"
+    },
+    "uerInfo":{
+        "length":"Email need to be from 5 to 30 letters",
+        "validInfo": "User cannot have special char"
+    },
+    "passwordInfo":{
+        "length":"password need to be between 8 a 30 char",
+        "validInfo": "password: no special chars (POC version)"
+    },
+    "textInfo":{
+        "textInfo":"max char is 167"
+    }
+}

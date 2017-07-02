@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { info } from '../../informationSet/mock-info';
+import { Information } from '../../informationSet/info';
+import { validInfo } from '../../validinfo/mock-valid-info';
+import { ValidInformation } from '../../validinfo/validinfo';
+
 
 @Component({
   selector: 'app-reg-pannel',
@@ -12,10 +17,13 @@ export class RegPannelComponent implements OnInit {
 form: FormGroup
 logoPath:string
 logoAlt:string 
+public infoSet: Information;
+public setText: Information;
+public setValidText: ValidInformation;
 
  constructor(
    private formBuilder:FormBuilder,
-   private authService: AuthService
+   private authService: AuthService,
    ) { 
      this.logoPath = "/../../assets/images/logo.png";
      this.logoAlt = "nazwa firmy";
@@ -23,6 +31,10 @@ logoAlt:string
   }
 
 createForm() {
+  
+  this.setText = info[0];
+  this.setValidText = validInfo[0];
+
   this.form = this.formBuilder.group({
     email: ['', Validators.compose([
       Validators.required,
