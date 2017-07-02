@@ -3,6 +3,7 @@ export class Information {
     option: string;
     header:string;
     subheader:string;
+    subheaderTime:string;
     ticket_1:string;
     ticket_5:string;
     firstname_placeholder:string;
