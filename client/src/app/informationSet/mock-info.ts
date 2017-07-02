@@ -5,7 +5,7 @@ export const info: Information[] = [
           id: 1, 
           option: "content", 
           header:  "WEEKEND PROMOTION",
-          subheader: "PROMOTION ENDS: ",
+          subheader: "PROMOTION ENDS:",
           subheaderTime:"20.03.2014, 12:00PM", 
           ticket_1:"1 TICKET €109",
           ticket_5:"5 TICKETS €495",
